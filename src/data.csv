@@ -1,0 +1,11 @@
+area,difficulty,fileName,optionFile
+INDENT,A,Indent_1,
+INDENT,A,Indent_2,
+INDENT,B,Indent_3,
+INDENT,C,Indent_4,
+FOR,A,For_1,
+FOR,B,Test,
+FOR,C,Test,
+CLASSTOSOURCE,A,CtoS_1,CtoS_ori_1
+CLASSTOSOURCE,B,CtoS_2,CtoS_ori_2
+CLASSTOSOURCE,C,CtoS_3,CtoS_ori_3
