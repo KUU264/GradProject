@@ -1,0 +1,12 @@
+public class ClassName {
+^	public static void main(String[] args) {
+^	^	int a = 3;
+^	^	paint(a, "*");
+^	}
+^	public static void paint (int number, String message) {
+^	^	for(int i = 0; i < number; i++){
+^	^	^	System.out.println(message);
+^	^	}
+^	^	System.out.println();
+^	}
+}
