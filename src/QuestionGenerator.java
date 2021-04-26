@@ -25,45 +25,79 @@ public class QuestionGenerator {
     /**
      * 1問生成
      */
-    public Question generateQ() {
-        Question q = new Question();
-        q.setArea(area);
-        q.setDifficulty(difficulty);
-        q.setCollectSource(generateSource());
-        q.setWrongSource(generateWrongSource(q.getCollectSource()));
-        return q;
+    public Question generateQ(Path path) {
+        switch (area) {
+            case ALL -> {
+            }
+            case BRACKETS -> {
+            }
+            case CLASS_CALL -> {
+            }
+            case CLASS_DIAGRAM_TO_SOURCE_CODE -> {
+            }
+            case CLASS_DIAGRAM -> {
+            }
+            case CODINGSTYLE_CLASSNAME -> {
+            }
+            case CODINGSTYLE_METHOD -> {
+            }
+            case CODINGSTYLE_VARIABLE -> {
+            }
+            case COMMENT -> {
+            }
+            case COMPILE_AND_RUN -> {
+            }
+            case CONSTRUCTOR -> {
+            }
+            case FOR -> {
+                Question q = new For();
+                q.setSource(generateSource(path));
+                return q.generateQ();
+            }
+            case INDENT -> {
+            }
+            case LITERAL_STRING -> {
+            }
+            case METHOD -> {
+            }
+            case OPERATOR_ASSIGNMENT -> {
+            }
+            case OPERATOR_COMPARISON -> {
+            }
+            case OPERATOR_LOGIC -> {
+            }
+            case PARAMETER_TYPE -> {
+            }
+            case PARAMETER -> {
+            }
+            case PROGRAM_ARGUMENTS -> {
+            }
+            case RETURN_TYPE -> {
+            }
+            case RETURN_VALUE_DEFAULT -> {
+            }
+            case RETURN_VALUE -> {
+            }
+            case SCOPE -> {
+            }
+            case SOURCE_CODE_TO_CLASS_DIAGRAM -> {
+            }
+            case STATIC_METHOD_CALL -> {
+            }
+            case VARIABLE_SENTENCE -> {
+            }
+            case VARIABLE -> {
+            }
+        }
+        return null;
     }
-//
-//    /**
-//     * 問題をリストに格納
-//     */
-//    public void generateQList() {
-//        qList.add(generateQ());
-//    }
 
-
-    private List<String> generateSource() {
+    private List<String> generateSource(Path path) {
         List<String> source;
-        Path path = Paths.get("src/Questions.INDENT/A/Indent_1.txt");
 
         source = PathUtils.readAll(path, Charset.forName("Windows-31J"));
 
         return source;
-    }
-
-    /**
-     * 誤例の生成
-     */
-    private List<String> generateWrongSource(List<String> collect) {
-        List<String> wrong = new ArrayList<>(collect);
-        for (int i = 0; i < collect.size(); i++) {
-            if (collect.get(i).charAt(0) == '^') {
-                wrong.add(i, collect.get(i).substring(2));
-                wrong.remove(i + 1);
-                return wrong;
-            }
-        }
-        return wrong;
     }
 
     public void reStart(String area, String difficulty) {

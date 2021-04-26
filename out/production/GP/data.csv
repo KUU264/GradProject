@@ -1,8 +1,8 @@
 area,difficulty,fileName,optionFile
-Questions.INDENT,A,Indent_1,
-Questions.INDENT,A,Indent_2,
-Questions.INDENT,B,Indent_3,
-Questions.INDENT,C,Indent_4,
+INDENT,A,Indent_1,
+INDENT,A,Indent_2,
+INDENT,B,Indent_3,
+INDENT,C,Indent_4,
 FOR,A,For_1,
 FOR,B,Test,
 FOR,C,Test,

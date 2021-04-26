@@ -1,18 +1,15 @@
-import java.util.Scanner;
+import Status.Area;
+import Status.Difficulty;
 
-import Status.*;
-import org.apache.pdfbox.tools.PDFBox;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         QuestionManager qm = new QuestionManager();
-        do{
-
-        }while (isContinuance());
-        Area area = Area.ALL;
-        Difficulty dif = Difficulty.ALL;
-        QuestionGenerator qg = new QuestionGenerator(area, dif);
-        Question q = qg.generateQ();
+//        Area area = inputArea();
+//        Difficulty dif = inputDif();
+        Question q = qm.generateQ();
+        qm.questioning(q);
     }
 
 
@@ -52,7 +49,7 @@ public class Main {
         }
         int cnt=0;
         while (d==null) {
-            System.out.print("input difficulty");
+            System.out.print("input difficulty->");
             Scanner sc = new Scanner(System.in);
             int num = sc.nextInt();
             if (0 <= num && num < values.length){

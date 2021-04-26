@@ -3,14 +3,26 @@ import Status.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Question {
-    protected Area area;
-    protected Difficulty difficulty;
-    protected List<String> collectSource = new ArrayList<>();
-    protected List<String> wrongSource = new ArrayList<>();
+public abstract class Question {
+    private Area area;
+    private Difficulty difficulty;
+    private QType qType;
 
-    public Question() {
 
+    private List<String> source;
+    private List<String> collectSource = new ArrayList<>();
+    private List<String> wrongSource = new ArrayList<>();
+    protected final String MARK_START = "#";
+    protected final String MARK_END = "#";
+
+    abstract public Question generateQ();
+
+    public List<String> getSource() {
+        return source;
+    }
+
+    public void setSource(List<String> source) {
+        this.source = source;
     }
 
     public List<String> getCollectSource() {
@@ -45,4 +57,11 @@ public class Question {
         this.difficulty = difficulty;
     }
 
+    public QType getqType() {
+        return qType;
+    }
+
+    public void setqType(QType qType) {
+        this.qType = qType;
+    }
 }
