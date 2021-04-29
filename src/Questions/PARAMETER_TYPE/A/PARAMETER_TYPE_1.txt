@@ -1,0 +1,8 @@
+public class ClassName {
+    public static void main(String[] args) {
+        String s = "*";
+        paint(s, 3);
+    }
+    public static void paint(String s, int number) {
+    }
+}

@@ -14,11 +14,31 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * PathëÄçÏÇ…ä÷Ç∑ÇÈUtilÉNÉâÉX
+ */
 public class PathUtils {
     public static final String CRLF = "\r\n";
     public static final String COMMA = ",";
 
     public static List<String> readAll(Path path, Charset charset){
+        try{
+            FileInputStream in = new FileInputStream(path.toString());
+            InputStreamReader is = new InputStreamReader(in);
+            BufferedReader br = new BufferedReader(is);
+            List<String> list = new ArrayList<>();
+            String str;
+            while((str = br.readLine()) != null){
+                list.add(str);
+            }
+            return list;
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static List<String> readAll(Path path){
         try{
             FileInputStream in = new FileInputStream(path.toString());
             InputStreamReader is = new InputStreamReader(in);

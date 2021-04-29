@@ -1,0 +1,8 @@
+public class ClassName {
+    public static void main(String[] args) {
+        int teacherCount = 1;
+        int studentCount = 40;
+        System.out.println(teacherCount);
+        System.out.println(studentCount);
+    }
+}

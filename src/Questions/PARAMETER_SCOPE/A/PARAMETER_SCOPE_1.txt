@@ -1,0 +1,9 @@
+public class ClassName {
+    public static void main(String[] args) {
+        int number = 0;
+        paint(number);
+    }
+    public static void paint(int number) {
+        System.out.println(number);
+    }
+}

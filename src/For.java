@@ -1,31 +1,28 @@
 import Status.Area;
+import Status.Difficulty;
 import Status.QType;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class For extends Question {
-    private int collectAnswer;
-    private int wrongAnswer;
-    private final String[] answer = {"init","condition","increment"};
+    private final int collectAnswer;
+    private final int wrongAnswer;
+    private final String[] answer = {"‰Šú‰»","ğŒ","‘•ª"};
 
     /**
-     * æ­£ç­”ã¨èª¤ç­”ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«é…ç½®
+     * ³“š‚ÆŒë“š‚ğƒ‰ƒ“ƒ_ƒ€‚É”z’u
      */
-    public For() {
-        setArea(Area.FOR);
-        setqType(QType.FOR);
-        collectAnswer = new Random().nextInt(3);
-        do {
-            wrongAnswer = new Random().nextInt(3);
-        } while (collectAnswer == wrongAnswer);
+    public For(List<String> source) {
+        super(Area.FOR, Difficulty.A, QType.FOR, source);
+        List<Integer> numList = new LinkedList<>(Arrays.asList(1,2,3));
+        collectAnswer = numList.remove(new Random().nextInt(3));
+        wrongAnswer = numList.get(new Random().nextInt(2));
     }
 
     /**
-     * å•é¡Œã®ä½œæˆ
+     * –â‘è‚Ìì¬
      */
     @Override
     public Question generateQ() {
@@ -41,7 +38,7 @@ public class For extends Question {
     }
 
     /**
-     * ç·¨é›†ã—ãŸã„è¡Œã‚’è¦‹ã¤ã‘ã‚‹
+     * •ÒW‚µ‚½‚¢s‚ğŒ©‚Â‚¯‚é
      */
     public int findFor() {
         Pattern pattern = Pattern.compile("for");
@@ -53,11 +50,11 @@ public class For extends Question {
         return -1;
     }
 
-    /** åˆ‡ã‚Šå‡ºã™å§‹ç‚¹ã¨çµ‚ç‚¹ã‚’æ¢ã™ */
+    /** Ø‚èo‚·n“_‚ÆI“_‚ğ’T‚· */
     private int[] searchCutPoint(int forRow){
         int[] cut = new int[2];
 
-        // æœ€åˆ'('ã®ä½ç½®ã‚’è¨˜éŒ²
+        // Å‰'('‚ÌˆÊ’u‚ğ‹L˜^
         String tmp = getSource().get(forRow);
         for (int i = 0; i < tmp.length(); i++) {
             if (tmp.charAt(i)=='(') {
@@ -66,7 +63,7 @@ public class For extends Question {
             }
         }
 
-        // æœ€å¾Œã®')'ã®ä½ç½®ã‚’è¨˜éŒ²
+        // ÅŒã‚Ì')'‚ÌˆÊ’u‚ğ‹L˜^
         for (int i = 0; i < tmp.length(); i++) {
             if (tmp.charAt(i) == ')') {
                 cut[1] = i;
@@ -77,18 +74,18 @@ public class For extends Question {
     }
 
     /**
-     * ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®ç·¨é›†
+     * ƒ\[ƒXƒR[ƒh‚Ì•ÒW
      */
     private void setSources(String source, int i) {
-        // å‰å¾Œã®ç©ºç™½ã‚’å–ã‚Šé™¤ã
+        // ‘OŒã‚Ì‹ó”’‚ğæ‚èœ‚­
         String[] strings = source.split("[\\s]*;[\\s]*");
 
-        // æ­£è§£
+        // ³‰ğ
         List<String> collect = new ArrayList<>(getSource());
         collect.set(i, collect.get(i).replace(source, putMark(strings, collectAnswer)));
         setCollectSource(collect);
 
-        //ä¸æ­£è§£
+        //•s³‰ğ
         List<String> wrong = new ArrayList<>(getSource());
         wrong.set(i, wrong.get(i).replace(source, putMark(strings, wrongAnswer)));
         setWrongSource(wrong);
@@ -96,9 +93,11 @@ public class For extends Question {
     }
 
     /**
-     * æŒ‡å®šä½ç½®ã‚’ãƒãƒ¼ã‚¯ã§å›²ã†
+     * w’èˆÊ’u‚ğƒ}[ƒN‚ÅˆÍ‚¤
+     * ƒ}[ƒN•t‚¯‚Í1-3,strings‚Í[0-2]‚È‚Ì‚Åpos‚ğ-1‚·‚é
      */
     private String putMark(String[] oldStr, int pos) {
+        pos--;
         StringBuilder sb = new StringBuilder(oldStr[pos]);
         sb.insert(0, MARK_START);
         sb.append(MARK_END);
@@ -109,12 +108,17 @@ public class For extends Question {
             else newStr[i] = oldStr[i];
         }
 
-        // åˆ†å‰²ã—ãŸè¦ç´ ã®å¾©æ—§
+        // •ªŠ„‚µ‚½—v‘f‚Ì•œ‹Œ
         return String.join("; ", newStr);
     }
 
     public int getCollectAnswer() {
         return collectAnswer;
+    }
+
+    // ³“š‚Ì•¶š—ñ‚ğ•Ô‹p
+    public String getCollectAnswerStr() {
+        return answer[collectAnswer-1];
     }
 
     public String[] getAnswer() {

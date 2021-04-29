@@ -10,7 +10,7 @@ import java.util.Random;
 import Status.*;
 
 /**
- * åˆ†é‡Ž,é›£æ˜“åº¦ã‚’è¨­å®šã—ã¦å•é¡Œã‚’ç”Ÿæˆ
+ * •ª–ì,“ïˆÕ“x‚ðÝ’è‚µ‚Ä–â‘è‚ð¶¬
  */
 public class QuestionGenerator {
     private final Area area;
@@ -23,9 +23,10 @@ public class QuestionGenerator {
     }
 
     /**
-     * 1å•ç”Ÿæˆ
+     * 1–â¶¬
      */
     public Question generateQ(Path path) {
+        Question q = null;
         switch (area) {
             case ALL -> {
             }
@@ -50,9 +51,7 @@ public class QuestionGenerator {
             case CONSTRUCTOR -> {
             }
             case FOR -> {
-                Question q = new For();
-                q.setSource(generateSource(path));
-                return q.generateQ();
+                q = new For(PathUtils.readAll(path));
             }
             case INDENT -> {
             }
@@ -89,14 +88,20 @@ public class QuestionGenerator {
             case VARIABLE -> {
             }
         }
-        return null;
+        try {
+            assert q != null;
+            return q.generateQ();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            System.exit(1);
+            return null;
+        }
     }
 
     private List<String> generateSource(Path path) {
         List<String> source;
-
         source = PathUtils.readAll(path, Charset.forName("Windows-31J"));
-
         return source;
     }
 

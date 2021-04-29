@@ -7,6 +7,9 @@ import java.util.List;
 
 import Status.*;
 
+/**
+ * csv‘€ì‚ÉŠÖ‚·‚éUtilƒNƒ‰ƒX
+ */
 public class CsvUtils {
     public static final Charset CHARSET = Charset.forName("Windows-31J");
     public static List<String[]> readAllLines(Path path){

@@ -1,4 +1,4 @@
-$網掛け部分#がfor制御文の初期化にあたるソースコードを選択せよ。
+次の選択肢から$網掛け部分#がfor制御文の初期化にあたるソースコードを選択せよ。
 
 public class ClassName{
     public static void main(String[] args) {

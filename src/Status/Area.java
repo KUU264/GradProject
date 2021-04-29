@@ -32,8 +32,10 @@ public enum Area {
     SOURCE_CODE_TO_CLASS_DIAGRAM("SourceCodeToClassDiagram"),  //クラス図
     STATIC_METHOD_CALL("StaticMethodCall"),                    //メソッドの呼び出し
     VARIABLE_SENTENCE("VariableSentence"),                     //変数宣言
-    VARIABLE("Variable");                                      //変数
-    
+    VARIABLE("Variable"),                                      //変数
+
+    TRANSFER_ARGUMENT("Transfer_Argument");                    //実引数と仮引数(受け渡し)
+
     
     private final String className;
     private Area(final String className){

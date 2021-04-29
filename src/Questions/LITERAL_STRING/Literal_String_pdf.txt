@@ -1,0 +1,17 @@
+次の選択肢から$網掛け部分#が文字列のリテラルとなっているソースコードを選択せよ。
+
+public class ClassName{
+    public static void main(String[] args) {
+        int i = 0;
+        System.out.print($"i の値は "#);
+        System.out.println(i);
+    }
+}
+
+public class ClassName{
+    public static void main(String[] args) {
+        int $i# = 0;
+        System.out.print("i の値は ");
+        System.out.println($i#);
+    }
+}

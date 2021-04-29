@@ -1,0 +1,8 @@
+public class ClassName {
+    public static void main(String[] args) {
+        String s = "¡“ú‚Í";
+        paint(s, "°‚ê‚Å‚·");
+    }
+    public static void paint(String message1, String message2) {
+    }
+}

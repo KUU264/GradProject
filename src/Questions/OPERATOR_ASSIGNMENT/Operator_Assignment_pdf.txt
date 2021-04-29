@@ -1,0 +1,15 @@
+次の選択肢から$網掛け部分#が代入演算子であるソースコードを選択せよ。
+
+public class ClassName{
+    public static void main(String[] args) {
+        int a $=# 3 + 5;
+        System.out.println(a);
+    }
+}
+
+public class ClassName{
+    public static void main(String[] args) {
+        int a = 3 $+# 5;
+        System.out.println(a);
+    }
+}

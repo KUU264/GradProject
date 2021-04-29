@@ -1,0 +1,9 @@
+public class ClassName {
+    public static void main(String[] args) {
+        for (int studentCount = 0; studentCount < 40; studentCount++) {
+            System.out.print("studentCount");
+            System.out.print(studentCount);
+        }
+        System.out.println();
+    }
+}

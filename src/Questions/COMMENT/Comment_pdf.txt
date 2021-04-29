@@ -1,0 +1,19 @@
+次の選択肢1、2から、「$網掛け部分#がコメントであるソースコード」を選択せよ。
+
+public class ClassName {
+    public static void main(String[] args) {
+        boolean b1 = (3 < 5);
+        $//System.out.println(b1);#
+        boolean b2 = false;
+        $//System.out.println(b2);#
+    }
+}
+
+public class ClassName {
+    public static void main(String[] args) {
+        $boolean b1 = (3 < 5);#
+        //System.out.println(b1);
+        $boolean b2 = false;#
+        //System.out.println(b2);
+    }
+}

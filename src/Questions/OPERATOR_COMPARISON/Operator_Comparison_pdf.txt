@@ -1,0 +1,31 @@
+次の選択肢から$網掛け部分#が比較演算子であるソースコードを選択せよ。
+
+public class ClassName {
+    public static void main(String[] args) {
+        printWeatherInformation(10);
+        printWeatherInformation(-1);
+    }
+    
+    public static void printWeatherInformation(int temperature) {
+        String message = "真夏日ではありません";
+        if(temperature < 0) {
+            message $=# "真冬日です（0 未満）";
+        }
+        System.out.println(message);
+    }
+}
+
+public class ClassName {
+    public static void main(String[] args) {
+        printWeatherInformation(10);
+        printWeatherInformation(-1);
+    }
+    
+    public static void printWeatherInformation(int temperature) {
+        String message = "真夏日ではありません";
+        if(temperature $<# 0) {
+            message = "真冬日です（0 未満）";
+        }
+        System.out.println(message);
+    }
+}

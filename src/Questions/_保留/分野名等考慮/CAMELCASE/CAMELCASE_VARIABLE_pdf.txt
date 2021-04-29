@@ -1,0 +1,24 @@
+次のソースコードの下線部は「$変数?」である。
+次の選択肢1、2から、「$下線部?の変数が$キャメルケースでない~ソースコード」を選択せよ。
+
+public class ClassName {
+    public static void main(String[] args) {
+        int $sum? = 0;
+        for(int $i? = 0; $i? < 10; $i?++) {
+            $sum? = $sum? + ($i? + 1);
+        }
+        System.out.print("合計：");
+        System.out.println($sum?);
+    }
+}
+
+public class ClassName {
+    public static void main(String[] args) {
+        int $Sum? = 0;
+        for(int $I? = 0; $I? < 10; $I?++) {
+            $Sum? = $Sum? + ($I? + 1);
+        }
+        System.out.print("合計：");
+        System.out.println($Sum?);
+    }
+}
