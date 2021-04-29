@@ -16,7 +16,7 @@ public class FileUtils {
         return getSpecificFiles(files, "java");
     }
 
-    // ファイル配列から指定された拡張子のファイルを抽出し、その配列を返す
+    // ファイル配列から指定拡張子のファイルのみの配列を返す
     public static File[] getSpecificFiles(File[] files, String extension){
         List<File> fileList = new ArrayList<>();
         for (File file : files) {
@@ -25,11 +25,8 @@ public class FileUtils {
                 fileList.add(file);
             }
         }
-        File[] returnFiles = new File[fileList.size()];
-        for (int i = 0; i < fileList.size(); i++) {
-            returnFiles[i] = fileList.get(i);
-        }
-        return returnFiles;
+
+        return fileList.toArray(new File[0]);
     }
 
     // 複数の拡張子を選択したい場合
@@ -43,11 +40,7 @@ public class FileUtils {
                 }
             }
         }
-        File[] returnFiles = new File[fileList.size()];
-        for (int i = 0; i < fileList.size(); i++) {
-            returnFiles[i] = fileList.get(i);
-        }
-        return returnFiles;
+        return fileList.toArray(new File[0]);
     }
 
 }

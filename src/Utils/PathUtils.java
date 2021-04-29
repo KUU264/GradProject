@@ -21,6 +21,7 @@ public class PathUtils {
     public static final String CRLF = "\r\n";
     public static final String COMMA = ",";
 
+    /*
     public static List<String> readAll(Path path, Charset charset){
         try{
             FileInputStream in = new FileInputStream(path.toString());
@@ -37,6 +38,7 @@ public class PathUtils {
         }
         return null;
     }
+    */
 
     public static List<String> readAll(Path path){
         try{

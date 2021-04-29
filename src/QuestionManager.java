@@ -14,7 +14,7 @@ public class QuestionManager {
     private final List<String[]> csvData;
 
     public QuestionManager() {
-        csvData = CsvUtils.readAllLines(Path.of("src/data.csv"));
+        csvData = CsvUtils.readAllLines(Path.of("Questions/questionData.csv"));
     }
 
     public List<String[]> getCsvData() {
@@ -25,14 +25,11 @@ public class QuestionManager {
         return null;
     }
 
-    //    public Question generateQ(Area area, Difficulty dif){
-    public Question generateQ() {
-        Area area = Area.FOR;
-        Difficulty dif = Difficulty.A;
+    public Question generateQ(Area area, Difficulty dif){
         QuestionGenerator qg = new QuestionGenerator(area, dif);
 
         // ジャンルと難易度からソースコードを選択
-        File file = new File("src/questions/" + area.getClassName() + "/" + dif.getClassName());
+        File file = new File("Questions/" + area.getClassName() + "/" + dif.getClassName());
         try {
             File[] files = file.listFiles();
             assert files != null;

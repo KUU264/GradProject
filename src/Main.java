@@ -8,7 +8,9 @@ public class Main {
         QuestionManager qm = new QuestionManager();
 //        Area area = inputArea();
 //        Difficulty dif = inputDif();
-        Question q = qm.generateQ();
+        Area area = Area.FOR;
+        Difficulty dif = Difficulty.A;
+        Question q = qm.generateQ(area,dif);
         qm.questioning(q);
     }
 

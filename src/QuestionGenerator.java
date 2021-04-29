@@ -1,11 +1,10 @@
 import Utils.PathUtils;
 
-import java.nio.charset.Charset;
+import java.lang.reflect.Constructor;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 import Status.*;
 
@@ -26,83 +25,20 @@ public class QuestionGenerator {
      * 1問生成
      */
     public Question generateQ(Path path) {
-        Question q = null;
-        switch (area) {
-            case ALL -> {
-            }
-            case BRACKETS -> {
-            }
-            case CLASS_CALL -> {
-            }
-            case CLASS_DIAGRAM_TO_SOURCE_CODE -> {
-            }
-            case CLASS_DIAGRAM -> {
-            }
-            case CODINGSTYLE_CLASSNAME -> {
-            }
-            case CODINGSTYLE_METHOD -> {
-            }
-            case CODINGSTYLE_VARIABLE -> {
-            }
-            case COMMENT -> {
-            }
-            case COMPILE_AND_RUN -> {
-            }
-            case CONSTRUCTOR -> {
-            }
-            case FOR -> {
-                q = new For(PathUtils.readAll(path));
-            }
-            case INDENT -> {
-            }
-            case LITERAL_STRING -> {
-            }
-            case METHOD -> {
-            }
-            case OPERATOR_ASSIGNMENT -> {
-            }
-            case OPERATOR_COMPARISON -> {
-            }
-            case OPERATOR_LOGIC -> {
-            }
-            case PARAMETER_TYPE -> {
-            }
-            case PARAMETER -> {
-            }
-            case PROGRAM_ARGUMENTS -> {
-            }
-            case RETURN_TYPE -> {
-            }
-            case RETURN_VALUE_DEFAULT -> {
-            }
-            case RETURN_VALUE -> {
-            }
-            case SCOPE -> {
-            }
-            case SOURCE_CODE_TO_CLASS_DIAGRAM -> {
-            }
-            case STATIC_METHOD_CALL -> {
-            }
-            case VARIABLE_SENTENCE -> {
-            }
-            case VARIABLE -> {
-            }
-        }
+        Object q;
+        List<String> source = PathUtils.readAll(path);
         try {
-            assert q != null;
-            return q.generateQ();
-
-        }catch (Exception e){
-            e.printStackTrace();
+            // リフレクションを用いてジャンル名からインスタンスを生成
+            Class<?> className = Class.forName(area.getClassName());
+            Constructor<?> constructor = className.getConstructor(Difficulty.class, List.class);
+            q = constructor.newInstance(difficulty, source);
+            return ((Question) q).generateQ();
+        } catch (Exception e) {
+            System.out.println("問題の生成に失敗しました。");
+            System.out.println(Arrays.toString(e.getStackTrace()));
             System.exit(1);
             return null;
         }
-    }
-
-    private List<String> generateSource(Path path) {
-        List<String> source;
-        source = PathUtils.readAll(path, Charset.forName("Windows-31J"));
-        return source;
     }
 
     public void reStart(String area, String difficulty) {

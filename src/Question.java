@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Question {
-    private final Area area;
-    private final Difficulty difficulty;
-    private final QType qType;
+    public final Area area;
+    public final Difficulty difficulty;
+    public final QType qType;
 
-    private final List<String> source;
+    public final List<String> source;
     private List<String> collectSource = new ArrayList<>();
     private List<String> wrongSource = new ArrayList<>();
 
-    protected final String MARK_START = "#";
-    protected final String MARK_END = "#";
-    protected final String MARK_START_PDF = "$";
-    protected final String MARK_END_PDF_NET = "#";
-    protected final String MARK_END_PDF_RED = "~";
-    protected final String MARK_END_PDF_UNDERLINE = "?";
+    public final String MARK_START = "#";
+    public final String MARK_END = "#";
+    public final String MARK_START_PDF = "$";
+    public final String MARK_END_PDF_NET = "#";
+    public final String MARK_END_PDF_RED = "~";
+    public final String MARK_END_PDF_UNDERLINE = "?";
 
     public Question(Area area, Difficulty difficulty, QType qType, List<String> source) {
         this.area = area;
@@ -27,10 +27,6 @@ public abstract class Question {
     }
 
     abstract public Question generateQ();
-
-    public List<String> getSource() {
-        return source;
-    }
 
     public List<String> getCollectSource() {
         return collectSource;

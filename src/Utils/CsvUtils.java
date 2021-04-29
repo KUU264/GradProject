@@ -45,6 +45,6 @@ public class CsvUtils {
     }
 
     public static List<String> readAll(Path path){
-        return PathUtils.readAll(path,CHARSET);
+        return PathUtils.readAll(path);
     }
 }
